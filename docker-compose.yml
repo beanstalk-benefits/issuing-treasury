@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  database:
+
+services:
+  issuing-postgres:
+    image: postgres:14.1-alpine
+    container_name: issuing-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=issuingusername
+      - POSTGRES_PASSWORD=issuingpassword
+      - POSTGRES_DB=expense_management
+    ports:
+      - 25432:5432
+    volumes:
+        - database:/var/lib/postgresql/data
+  issuing:
+    container_name: issuing
+    build:
+      context: .
+      dockerfile: ./expense-management/Dockerfile
+    env_file:
+      - ./expense-management/.env
+    restart: always
+    ports:
+      - 3002:3002
