@@ -57,16 +57,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <Box px={3} py={5} sx={{ backgroundColor: "neutral.50" }}>
             <Box mx="auto" maxWidth={800} textAlign="center">
               <Typography variant="body2" color="neutral.400">
-                Stripe Issuing Platform Demo partners with Stripe Payments
-                Company for money transmission services and account services.
-                Stripe Issuing Platform Demo Visa® Commercial Credit cards are
-                issued by Example Bank.{" "}
+                Beanstalk Benefits partners with Stripe Payments Company for
+                money transmission services and account services. Beanstalk
+                Benefits Visa® Commercial Credit cards are issued by Celtic
+                Bank.{" "}
                 <Link
                   href="https://stripe.com/privacy"
                   target="_blank"
                   underline="none"
                 >
-                  Stripe Privacy Policy & Terms apply
+                  Privacy Policy & Terms apply
                 </Link>
               </Typography>
             </Box>

@@ -58,6 +58,53 @@ export const getServerSideProps = async (
   };
 };
 
+const ACHTransferTopupInstructions = ({
+  financialAddress,
+}: {
+  financialAddress: FinancialAddress;
+}) => {
+  const aba = financialAddress.aba;
+
+  if (!aba) {
+    return;
+  }
+
+  return (
+    <>
+      <Typography>
+        Send an ACH credit transfer to the following bank account to top up your
+        Issuing balance.
+      </Typography>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <NumbersIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Account number"
+            secondary={aba.account_number}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <BusinessIcon />
+          </ListItemIcon>
+          <ListItemText primary="Bank name" secondary={aba.bank_name} />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <ForkRightIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Routing number"
+            secondary={aba.routing_number}
+          />
+        </ListItem>
+      </List>
+    </>
+  );
+};
+
 // When creating Funding Instructions, Stripe will assign a destination
 // bank account in an appropriate country for the user. Topups must be
 // sent as either FPS/BACS or SEPA credit transfers, depending on the
@@ -192,15 +239,24 @@ const Page = ({
                       )}
                     </strong>
                   </Typography>
-
                   {fundingInstructions.bank_transfer.type ==
-                  "gb_bank_transfer" ? (
+                    "us_bank_transfer" && (
+                    <ACHTransferTopupInstructions
+                      financialAddress={
+                        fundingInstructions.bank_transfer.financial_addresses[0]
+                      }
+                    />
+                  )}
+                  {fundingInstructions.bank_transfer.type ==
+                    "gb_bank_transfer" && (
                     <FPSTransferTopupInstructions
                       financialAddress={
                         fundingInstructions.bank_transfer.financial_addresses[0]
                       }
                     />
-                  ) : (
+                  )}
+                  {fundingInstructions.bank_transfer.type ==
+                    "eu_bank_transfer" && (
                     <SEPATransferTopupInstructions
                       financialAddress={
                         fundingInstructions.bank_transfer.financial_addresses[0]

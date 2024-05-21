@@ -10,6 +10,9 @@ const getStripeSecretKey = (platform: Platform): string | null => {
     case Platform.EU:
       key = process.env.STRIPE_SECRET_KEY_EU;
       break;
+    case Platform.US:
+      key = process.env.STRIPE_SECRET_KEY_US;
+      break;
     default:
       throw new Error(`Unsupported platform: ${platform}`);
   }
@@ -26,6 +29,9 @@ const getStripePublishableKey = (platform: Platform): string | null => {
       break;
     case Platform.EU:
       key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_EU;
+      break;
+    case Platform.US:
+      key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_US;
       break;
     default:
       throw new Error(`Unsupported platform: ${platform}`);

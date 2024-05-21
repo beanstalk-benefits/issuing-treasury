@@ -256,10 +256,8 @@ const CreateCardholderForm = ({
                       label={
                         <Typography variant="body2">
                           This cardholder has agreed to the{" "}
-                          <Link href="#">
-                            Example Bank Authorized User Terms
-                          </Link>{" "}
-                          and <Link href="#">Example Bank Privacy Policy.</Link>
+                          <Link href="#">Stripe E-Sign Disclosure</Link> and{" "}
+                          <Link href="#">Celtic Bank Terms.</Link>
                         </Typography>
                       }
                     />

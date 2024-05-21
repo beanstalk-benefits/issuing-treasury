@@ -1,11 +1,8 @@
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import {
   Box,
-  Button,
   Divider,
   Drawer,
   Stack,
-  SvgIcon,
   Theme,
   Typography,
   useMediaQuery,
@@ -91,38 +88,6 @@ export const SideNav = (props: { onClose: () => void; open: boolean }) => {
           </Stack>
         </Box>
         <Divider sx={{ borderColor: "neutral.700" }} />
-        {/* FOR-DEMO-ONLY: You can remove this for an actual application */}
-        <Box
-          sx={{
-            px: 2,
-            py: 3,
-          }}
-          textAlign="center"
-        >
-          <Typography color="neutral.100" variant="subtitle2">
-            Stripe Issuing platform demo
-          </Typography>
-          <Typography color="neutral.600" variant="subtitle2">
-            Data, financial activity and cards are fictitious and for testing
-            purposes only. You should not input personal information.
-          </Typography>
-          <Button
-            component="a"
-            endIcon={
-              <SvgIcon fontSize="small">
-                <ArrowTopRightOnSquareIcon />
-              </SvgIcon>
-            }
-            fullWidth
-            href="https://github.com/stripe-samples/issuing-treasury/tree/main/expense-management"
-            sx={{ mt: 2 }}
-            target="_blank"
-            variant="contained"
-            color="secondary"
-          >
-            View on GitHub
-          </Button>
-        </Box>
       </Box>
     </Scrollbar>
   );

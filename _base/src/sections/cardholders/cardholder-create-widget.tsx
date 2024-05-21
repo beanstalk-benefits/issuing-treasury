@@ -271,9 +271,9 @@ const CreateCardholderForm = ({
                         <Typography variant="body2">
                           This cardholder has agreed to the{" "}
                           <Link href="#">
-                            Example Bank Authorized User Terms
+                            Celtic Bank Authorized User Terms
                           </Link>{" "}
-                          and <Link href="#">Example Bank Privacy Policy.</Link>
+                          and <Link href="#">Celtic Bank Privacy Policy.</Link>
                         </Typography>
                       }
                     />

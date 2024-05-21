@@ -34,11 +34,15 @@ export const getServerSideProps = async (
     return { redirect: { destination: "/", permanent: false } };
   }
 
-  const { [Platform.UK]: enableUK, [Platform.EU]: enableEU } =
-    enabledPlatforms();
+  const {
+    [Platform.US]: enableUS,
+    [Platform.UK]: enableUK,
+    [Platform.EU]: enableEU,
+  } = enabledPlatforms();
 
   return {
     props: {
+      enableUS,
       enableUK,
       enableEU,
     },
@@ -46,9 +50,11 @@ export const getServerSideProps = async (
 };
 
 const Page = ({
+  enableUS,
   enableUK,
   enableEU,
 }: {
+  enableUS: boolean;
   enableUK: boolean;
   enableEU: boolean;
 }) => {
@@ -61,7 +67,7 @@ const Page = ({
     // TODO: See if we can improve the way we handle errors from the backend
     submit: null,
     ...{
-      country: "GB",
+      country: "US",
     },
   };
 
@@ -141,6 +147,9 @@ const Page = ({
                 type="password"
               />
               <Field as={TextField} label="Country" name="country" select>
+                <MenuItem value="US" disabled={!enableUS}>
+                  United States
+                </MenuItem>
                 <MenuItem value="AT" disabled={!enableEU}>
                   Austria
                 </MenuItem>

@@ -1,6 +1,7 @@
 enum Platform {
   UK,
   EU,
+  US,
 }
 
 const getPlatform = (country: string): Platform => {
@@ -9,6 +10,8 @@ const getPlatform = (country: string): Platform => {
       return Platform.UK;
     case "EU":
       return Platform.EU;
+    case "US":
+      return Platform.US;
     default:
       throw new Error(`Unsupported country ${country}`);
   }
@@ -26,9 +29,14 @@ const enabledPlatforms = () => {
     keyPresent(process.env.STRIPE_SECRET_KEY_EU) &&
     keyPresent(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_EU);
 
+  const usEnabled =
+    keyPresent(process.env.STRIPE_SECRET_KEY_US) &&
+    keyPresent(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_US);
+
   return {
     [Platform.UK]: ukEnabled,
     [Platform.EU]: euEnabled,
+    [Platform.US]: usEnabled,
   };
 };
 

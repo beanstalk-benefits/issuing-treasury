@@ -1,12 +1,5 @@
-import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import {
-  Button,
-  DialogTitle,
-  Drawer,
-  IconButton,
-  SvgIcon,
-} from "@mui/material";
+import { DialogTitle, Drawer, IconButton, SvgIcon } from "@mui/material";
 import Box from "@mui/material/Box";
 import useTheme from "@mui/system/useTheme";
 import React, { ReactNode } from "react";
@@ -35,7 +28,7 @@ const FloatingTestPanel = ({
         },
       }}
     >
-      <Button
+      {/* <Button
         variant="contained"
         startIcon={
           <SvgIcon fontSize="small">
@@ -45,7 +38,7 @@ const FloatingTestPanel = ({
         onClick={() => setOpen(true)}
       >
         Generate test data
-      </Button>
+      </Button> */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <DialogTitle
           display="flex"

@@ -227,7 +227,7 @@ export async function getBalanceTransactions(
 }
 
 export type FinancialAddress = {
-  type: "iban" | "sort_code";
+  type: "iban" | "sort_code" | "aba";
   supported_networks: string[];
   iban?: {
     account_holder_name: string;
@@ -239,6 +239,11 @@ export type FinancialAddress = {
     account_holder_name: string;
     account_number: string;
     sort_code: string;
+  };
+  aba?: {
+    account_number: string;
+    bank_name: string;
+    routing_number: string;
   };
 };
 
@@ -254,14 +259,24 @@ export type FundingInstructions = {
   };
 };
 
+const getBankTransferType = (country: string): string => {
+  switch (country) {
+    case "GB":
+      return "gb_bank_transfer";
+    case "US":
+      return "us_bank_transfer";
+    default:
+      return "eu_bank_transfer";
+  }
+};
+
 export async function createFundingInstructions(
   stripeAccount: StripeAccount,
   country: string,
   currency: string,
 ): Promise<FundingInstructions> {
   const { accountId, platform } = stripeAccount;
-  const bankTransferType =
-    country == "GB" ? "gb_bank_transfer" : "eu_bank_transfer";
+  const bankTransferType = getBankTransferType(country);
   const data = {
     currency: currency as string,
     funding_type: "bank_transfer",

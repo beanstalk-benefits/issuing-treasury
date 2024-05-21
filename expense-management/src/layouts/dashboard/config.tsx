@@ -1,24 +1,21 @@
 import {
   CreditCardIcon,
   BanknotesIcon,
-  ChartBarIcon,
   UsersIcon,
-  WrenchScrewdriverIcon,
   ShoppingBagIcon,
-  CogIcon,
 } from "@heroicons/react/24/solid";
 import { SvgIcon } from "@mui/material";
 
 export const items = [
-  {
-    title: "Overview",
-    path: "/",
-    icon: (
-      <SvgIcon fontSize="small">
-        <ChartBarIcon />
-      </SvgIcon>
-    ),
-  },
+  // {
+  //   title: "Overview",
+  //   path: "/",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <ChartBarIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
   {
     title: "Cardholders",
     path: "/cardholders",
@@ -55,22 +52,22 @@ export const items = [
       </SvgIcon>
     ),
   },
-  {
-    title: "Test data",
-    path: "/test-data",
-    icon: (
-      <SvgIcon fontSize="small">
-        <WrenchScrewdriverIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    ),
-  },
+  // {
+  //   title: "Test data",
+  //   path: "/test-data",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <WrenchScrewdriverIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
+  // {
+  //   title: "Settings",
+  //   path: "/settings",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <CogIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
 ];
